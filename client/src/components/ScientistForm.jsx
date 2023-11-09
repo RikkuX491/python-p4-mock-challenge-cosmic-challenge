@@ -5,7 +5,6 @@ export default function ScientistForm({
   scientist = {
     name: "",
     field_of_study: "",
-    avatar: "",
   },
   edit,
 }) {
@@ -27,7 +26,6 @@ export default function ScientistForm({
       setFormData({
         name: "",
         field_of_study: "",
-        avatar: "",
       });
       setErrors([]);
     } else {
@@ -40,7 +38,6 @@ export default function ScientistForm({
     const updateData = {
       name: formData.name,
       field_of_study: formData.field_of_study,
-      avatar: formData.avatar,
     };
     const config = {
       method: "PATCH",
@@ -55,7 +52,6 @@ export default function ScientistForm({
       setFormData({
         name: "",
         field_of_study: "",
-        avatar: "",
       });
       setErrors([]);
     } else {

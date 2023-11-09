@@ -77,8 +77,9 @@ The file `server/models.py` defines the model classes **without relationships**.
 Use the following commands to create the initial database `app.db`:
 
 ```console
-export FLASK_APP=server/app.py
+cd server
 flask db init
+flask db migrate -m 'initial model'
 flask db upgrade head
 ```
 
@@ -97,9 +98,9 @@ Set serialization rules to limit the recursion depth.
 Run the migrations and seed the database:
 
 ```console
-flask db revision --autogenerate -m 'message'
+flask db migrate -m 'implement relationships'
 flask db upgrade head
-python server/seed.py
+python seed.py
 ```
 
 > If you aren't able to get the provided seed file working, you are welcome to
@@ -358,3 +359,18 @@ data, along with the appropriate HTTP status code:
   "errors": ["validation errors"]
 }
 ```
+
+---
+
+### (Optional FYI) React `useCallback` hook
+
+The `ScientistDetail` component in the React app uses the `useCallback` hook to
+memoize the function that fetches a scientist by id. The scientist detail is
+fetched when the component initially renders, and is fetched again after
+updating the scientist detail. `useCallback` caches the function to avoid
+recreating it .
+
+### Resources
+
+- [useCallback API](https://react.dev/reference/react/useCallback)
+- [Should you add useCallback everywhere?](https://react.dev/reference/react/useCallback#should-you-add-usecallback-everywhere)
