@@ -95,6 +95,7 @@ class ScientistById(Resource):
             #     db.session.delete(mission)
             
             db.session.delete(scientist)
+            db.session.commit()
             response_body = {}
             return make_response(response_body, 204)
         else:
